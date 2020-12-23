@@ -89,7 +89,7 @@ public class ChatController : MonoBehaviour, IChatClientListener
 #if PHOTON_UNITY_NETWORKING
         this.chatAppSettings = PhotonNetwork.PhotonServerSettings.AppSettings.GetChatSettings();
 #endif
-
+        GameManager.Instance.chatController = this;
 
         //Connect();
     }

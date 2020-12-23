@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class PositionIndicator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //TODO : Add players marker/indicator
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

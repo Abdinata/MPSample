@@ -13,6 +13,22 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks, IConnect
 
     [SerializeField] bool isInMaster, isInLobby = false;
 
+
+    private void Awake()
+    {
+        Debug.Log("Connecting to services");
+        PhotonNetwork.AutomaticallySyncScene = true;
+
+        if (!PhotonNetwork.IsConnected)
+        {
+            Connect();
+        }
+        //PhotonNetwork.ConnectToBestCloudServer();
+    }
+
+
+
+
     public override void OnConnected()
     {
         Debug.Log("Connected");
@@ -27,6 +43,9 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks, IConnect
     public override void OnJoinedRoom()
     {
         MainLobbyCanvas.Instance.RoomCanvas.PlayerListLayout.OnJoinedRoom();
+
+        GameManager.Instance.chatController.Connect();
+        GameManager.Instance.chatController.ChannelsToJoinOnConnect[1] = PhotonNetwork.CurrentRoom.Name; //Channel name
         base.OnJoinedRoom();
     }
 
@@ -47,12 +66,12 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks, IConnect
         Debug.Log(PhotonNetwork.NickName);
         //GameManager.Instance.playerUseName = PhotonNetwork.NickName.ToString();
 
-        FindObjectOfType<ChatController>().Connect();
         PhotonNetwork.JoinLobby(TypedLobby.Default);
 
         UpdateStats();
     }
 
+    //Update lobby statistic
     void UpdateStats()
     {
         playersText.text = PhotonNetwork.CountOfPlayers.ToString();
@@ -92,6 +111,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks, IConnect
 
     }
 
+    //Close UI block
     IEnumerator CloseUIBlock()
     {
         yield return new WaitForSeconds(2.5f);
@@ -107,11 +127,11 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks, IConnect
 
     public override void OnLeftLobby()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void OnLobbyStatisticsUpdate(List<TypedLobbyInfo> lobbyStatistics)
     {
+        UpdateStats();
     }
 
     public override void OnRegionListReceived(RegionHandler regionHandler)
@@ -123,18 +143,6 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks, ILobbyCallbacks, IConnect
         MainLobbyCanvas.Instance.LobbyCanvas.RoomLayout.OnRoomListUpdate(roomList);
         Debug.Log("there's " + roomList.Count + " room(s)");
         UpdateStats();
-    }
-
-    private void Awake()
-    {
-        Debug.Log("Connecting to services");
-        PhotonNetwork.AutomaticallySyncScene = true;
-
-        if(!PhotonNetwork.IsConnected)
-        {
-            Connect();
-        }
-        //PhotonNetwork.ConnectToBestCloudServer();
     }
 
     void Connect()

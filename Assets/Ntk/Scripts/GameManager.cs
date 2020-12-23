@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO : Add sample board & quiz
 public enum MyBoardGameMode
 {
     Solo, Multi
@@ -9,45 +10,33 @@ public enum MyBoardGameMode
 
 public enum GameType
 {
-    Runner, Quiz
+    Runner, Quiz, Board
 }
 
 public class GameManager
 {
     //--- GLOBAL
     public string selectedLevel = "test";
-    public string playerUseName = "";
+    //public string playerUseName = "";
     public GameType gameType = GameType.Runner;
-    //--- QuizGame Variables
-    public bool isMyQuizTurn = false;
-    public bool myQuizTurnDone = false;
 
-    public int maxQuizPlayers = 2;
-    //--- Quiz End
+    public ChatController chatController;
 
-    //Runner Game
+    public Sprite[] Avatar;
+    public int avatarIndex = 999;
+    public int maxPlayers = 4;
+
+    //-- Runner Game
     public RunnerSpawner RunnerSpawner;
     public RunnerManager runnerManager;
     public List<GameObject> PlayersObject = new List<GameObject>();
 
-    //--- BoardGame Variables
-    public string[] PlayersIDs;
-    public bool myTurnDone = false;
-
-    public MyBoardGameMode boardGameMode;
-    public bool isMyTurn = false;
-    public bool diceShot = false;
-    //--- Board End
     //-- Reset All Data
     public void resetAllData()
     {
 
     }
 
-
-
-
-    //----
     private static GameManager instance;
 
     private GameManager() { }

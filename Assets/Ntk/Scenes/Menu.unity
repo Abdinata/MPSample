@@ -1223,7 +1223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Strategy
+  m_Text: Simple Runner
 --- !u!222 &1881944594
 CanvasRenderer:
   m_ObjectHideFlags: 0

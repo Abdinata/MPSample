@@ -31,7 +31,7 @@ public class RoomCanvas : MonoBehaviour
 
     public void OnClickLoadLevelStart()
     {
-        if (!PhotonNetwork.IsMasterClient) { return; }
+        if (!PhotonNetwork.IsMasterClient || PhotonNetwork.CurrentRoom.PlayerCount <= 1) { return; }
 
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;

@@ -10,9 +10,8 @@ public class SimpleLobbyConfiguration : MonoBehaviour
     {
         GameManager.Instance.gameType = gameType;
         GameManager.Instance.selectedLevel = gameScene;
-        Debug.Log(GameManager.Instance.selectedLevel);
         if(GameManager.Instance.selectedLevel != gameScene)
             GameManager.Instance.selectedLevel = gameScene;
-        Debug.Log(GameManager.Instance.selectedLevel + ", " + gameScene);
+
     }
 }

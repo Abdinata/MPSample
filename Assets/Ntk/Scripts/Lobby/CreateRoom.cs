@@ -25,7 +25,7 @@ public class CreateRoom : MonoBehaviour
         if (roomName == null)
             return;
 
-        RoomOptions room = new RoomOptions() { IsOpen = true, IsVisible = true, MaxPlayers = (byte)GameManager.Instance.maxQuizPlayers };
+        RoomOptions room = new RoomOptions() { IsOpen = true, IsVisible = true, MaxPlayers = (byte)GameManager.Instance.maxPlayers };
         Debug.Log("is in a room " + PhotonNetwork.InRoom);
 
         PhotonNetwork.CreateRoom(roomName.text, room, TypedLobby.Default);

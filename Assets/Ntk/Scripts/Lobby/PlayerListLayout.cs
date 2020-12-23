@@ -30,7 +30,6 @@ public class PlayerListLayout : MonoBehaviour
 
     public void OnPhotonPlayerDisconnected(Player player)
     {
-        Debug.Log("X");
         PlayerLeftRoom(player);
     }
 
@@ -64,14 +63,15 @@ public class PlayerListLayout : MonoBehaviour
 
     }
 
+    //-- When player entered room
     public void OnPlayerEnteredRoom(Player newPlayer)
     {
         PlayerJoinedRoom(newPlayer);
     }
 
+    //-- When player left room
     public void OnPlayerLeftRoom(Player otherPlayer)
     {
-        Debug.Log("X");
         PlayerLeftRoom(otherPlayer);
     }
 }

@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class RealtimeLeaderboard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //TODO : Add realtime standing leaderboard
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
