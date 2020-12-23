@@ -126,7 +126,7 @@ public class PlayerID : MonoBehaviour
         Player p = PhotonNetwork.LocalPlayer;
         Debug.Log(spawnIndex +", " + p.ActorNumber);
 
-        List<Player> playerList = new List<Player>();
+        List<Player> playerList = new List<Player>(); //Temporary List
 
         for(int i = 0; i < PhotonNetwork.CountOfPlayers; i++)
         {
@@ -134,11 +134,13 @@ public class PlayerID : MonoBehaviour
         }
 
         int orderActor = 0;
+
+        // Add Actor order for spawning
         if (playerList.Count > 0)
         {
             playerList.OrderBy(x => x.ActorNumber).ToList();
         }
-
+        //Make sure we have the correct order
         for(int i = 0; i<playerList.Count; i++)
         {
             if(playerList[i].ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
@@ -146,8 +148,10 @@ public class PlayerID : MonoBehaviour
                 orderActor = i;
             }
         }
+
         Vector3 t;
         Quaternion q;
+
         if (playersInGame <= GameManager.Instance.RunnerSpawner.spawnLoc.Length)
         {
             t = new Vector3(GameManager.Instance.RunnerSpawner.spawnLoc[orderActor].position.x, GameManager.Instance.RunnerSpawner.spawnLoc[orderActor].position.y,
@@ -159,28 +163,17 @@ public class PlayerID : MonoBehaviour
         }
         else
         {
-            t = new Vector3(GameManager.Instance.RunnerSpawner.spawnLoc[playersInGame - 1].position.x, GameManager.Instance.RunnerSpawner.spawnLoc[orderActor].position.y,
-                GameManager.Instance.RunnerSpawner.spawnLoc[playersInGame - 1].position.z + -2.5f);
+            //Update : Change the index of spawnlocation to [orderActor], it shouldn't be an issue now on spawning
 
-            q = GameManager.Instance.RunnerSpawner.spawnLoc[playersInGame - 1].transform.rotation;
+            t = new Vector3(GameManager.Instance.RunnerSpawner.spawnLoc[orderActor].position.x, GameManager.Instance.RunnerSpawner.spawnLoc[orderActor].position.y,
+                GameManager.Instance.RunnerSpawner.spawnLoc[orderActor].position.z + -2.5f);
+
+            q = GameManager.Instance.RunnerSpawner.spawnLoc[orderActor].transform.rotation;
             Debug.Log(t + ", " + q);
-            //photonView.RPC("SpawnPlayerRunner", RpcTarget.All, new object[] { t , q});
         }
 
         PhotonNetwork.Instantiate(Path.Combine("Prefabs","Runner"), t, q, 0);
 
-    }
-
-    [PunRPC]
-    public void StartRunGame()
-    {
-        
-    }
-
-    IEnumerator IEStartGame()
-    {
-        yield return new WaitForSeconds(3);
-        photonView.RPC("StartRunGame", RpcTarget.All);
     }
 
 }
