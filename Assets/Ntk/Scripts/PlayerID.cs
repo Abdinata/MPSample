@@ -66,6 +66,13 @@ public class PlayerID : MonoBehaviour
 
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
+
+        if (GameManager.Instance.avatarIndex == 999)
+        {
+            GameManager.Instance.avatarIndex = Random.Range(0, GameManager.Instance.Avatar.Length);
+            ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+            hash.Add("AvatarIndex", GameManager.Instance.avatarIndex);
+        }
     }
 
     void RoomMasterLoad()

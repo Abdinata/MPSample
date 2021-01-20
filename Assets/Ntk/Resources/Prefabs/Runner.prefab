@@ -543,6 +543,9 @@ GameObject:
   - component: {fileID: 5458514190286945837}
   - component: {fileID: 5458514190286945842}
   - component: {fileID: 5736208649530786720}
+  - component: {fileID: 3817236212479257830}
+  - component: {fileID: -6410596386000423633}
+  - component: {fileID: 5018930073558115431}
   m_Layer: 0
   m_Name: Runner
   m_TagString: MPPlayer
@@ -703,7 +706,7 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: Jump
   - Type: 1
-    SynchronizeType: 1
+    SynchronizeType: 0
     Name: JumpLeg
   m_SynchronizeLayers:
   - SynchronizeType: 0
@@ -720,6 +723,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656597698fb18ea4492dd42c3b611e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3817236212479257830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458514190286796592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06ff940c78ecc34fb6a6cfb6ca83454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryDatas: []
+--- !u!114 &-6410596386000423633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458514190286796592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126494ae2a10a34499272ed97a6c9f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logLevel: 5
+  ignoreGlobalLogLevel: 0
+  recorderInUse: {fileID: 5018930073558115431}
+  speakerInUse: {fileID: 0}
+  AutoCreateRecorderIfNotFound: 0
+  UsePrimaryRecorder: 0
+  SetupDebugSpeaker: 0
+--- !u!114 &5018930073558115431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458514190286796592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91175dcc15224463780e01a8a98b1b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logLevel: 3
+  ignoreGlobalLogLevel: 0
+  voiceDetection: 1
+  voiceDetectionThreshold: 0.01
+  voiceDetectionDelayMs: 500
+  unityMicrophoneDevice: MicWooow (Realtek High Definition Audio)
+  photonMicrophoneDeviceId: 0
+  interestGroup: 0
+  debugEchoMode: 0
+  reliableMode: 0
+  encrypt: 0
+  transmitEnabled: 0
+  samplingRate: 16000
+  frameDuration: 20000
+  bitrate: 30000
+  sourceType: 0
+  microphoneType: 0
+  audioClip: {fileID: 0}
+  loopAudioClip: 1
+  reactOnSystemChanges: 1
+  autoStart: 1
+  audioSessionParameters:
+    Category: 4
+    Mode: 0
+    CategoryOptions: 0800000004000000
+  useCustomAudioSessionParameters: 0
+  audioSessionPresetIndex: 0
+  nativeAndroidMicrophoneSettings:
+    AcousticEchoCancellation: 0
+    AutomaticGainControl: 0
+    NoiseSuppression: 0
+  recordOnlyWhenEnabled: 0
+  skipDeviceChangeChecks: 0
+  stopRecordingWhenPaused: 0
+  useOnAudioFilterRead: 0
+  trySamplingRateMatch: 0
+  useMicrophoneTypeFallback: 1
 --- !u!1 &5458514190286798722
 GameObject:
   m_ObjectHideFlags: 0

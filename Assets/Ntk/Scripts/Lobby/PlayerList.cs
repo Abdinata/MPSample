@@ -20,11 +20,9 @@ public class PlayerList : MonoBehaviour
 
         playerNameText.text = player.NickName;
 
-        if(GameManager.Instance.avatarIndex == 999)
-        {
-            GameManager.Instance.avatarIndex = Random.Range(0, GameManager.Instance.Avatar.Length);
-        }
-        avatar.sprite = GameManager.Instance.Avatar[GameManager.Instance.avatarIndex];
+        int avatarIndex = (int)player.CustomProperties["AvatarIndex"];
+
+        avatar.sprite = GameManager.Instance.Avatar[avatarIndex];
 
         //Wish i had times to implement avatar system instead randomize it
 

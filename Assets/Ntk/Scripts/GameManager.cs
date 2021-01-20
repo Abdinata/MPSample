@@ -52,4 +52,6 @@ public class GameManager
             return instance;
         }
     }
+
+    public inGameUI inGameUI;
 }
